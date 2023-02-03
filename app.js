@@ -5,6 +5,14 @@ const mainRoute = require('./routes/main');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+
+dotenv.config();
+let PORT;
+process.env.TOKEN_SECRET;
+
+process.env.STATUS === 'production' ? (PORT = process.env.PROD_PORT) : (PORT = process.env.DEV_PORT);
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true })); 
 app.use(bodyParser.json());
@@ -24,6 +32,6 @@ app.use( ( req, res, next ) => {
                 });
 
 app.use('/',mainRoute);
-app.listen(8000,() => {
-    console.log("Servidor Corriendo");
+app.listen(PORT,() => {
+    console.log(`Servidor Corriendo en el puerto ${PORT}`);
 });

@@ -1,5 +1,5 @@
 module.exports  = (sequelize, dataTypes) => { 
-    let alias = "Business";
+    let alias = "User";
     let cols = {
             id : {
                 type : dataTypes.INTEGER,
@@ -7,21 +7,18 @@ module.exports  = (sequelize, dataTypes) => {
                 primaryKey : true,
                 allowNull : false
             },
+            email:{
+                type:dataTypes.STRING,
+                allowNull: true
+            },
             name : {
                 type : dataTypes.STRING,
                 allowNull : false
             },
-
-            profit : {
-                type : dataTypes.FLOAT,
-                allowNull : false
-            },
-
-            userId:{
-                type : dataTypes.INTEGER,
+            password: {
+                type:dataTypes.STRING,
                 allowNull: false
             },
-
             created_at : {
                 type : dataTypes.NOW,
                 allowNull : false
@@ -35,24 +32,18 @@ module.exports  = (sequelize, dataTypes) => {
 
         }
         let config = {
-            tableName: "business",
+            tableName: "user",
             timestamps: true,
             underscored: true
         }
 
-        let Business = sequelize.define(alias,cols,config);
+        let User = sequelize.define(alias,cols,config);
 
-        Business.associate = (models)=>{
-            Business.belongsToMany(models.Products, {
-                through : "business_product",
-                foreignKey : "businessid"
+        User.associate = (models)=>{
+            User.hasMany(models.Business, {
+                foreignKey: "userId"
             });
-
-        Business.associate = (models) => {
-
-            Business.belongsTo(models.User);
-        };
         }
     
-        return Business;
+        return User;
     }
