@@ -15,6 +15,14 @@ module.exports  = (sequelize, dataTypes) => {
                 type : dataTypes.STRING,
                 allowNull : false
             },
+            dType : {
+                type: dataTypes.STRING,
+                allowNull: false
+            },
+            dNumber : {
+                type: dataTypes.INTEGER,
+                allowNull:false
+            },
             password: {
                 type:dataTypes.STRING,
                 allowNull: false
@@ -33,7 +41,7 @@ module.exports  = (sequelize, dataTypes) => {
         }
         let config = {
             tableName: "user",
-            timestamps: true,
+            timestamps: false,
             underscored: true
         }
 

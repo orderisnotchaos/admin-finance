@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) =>{
 
-    let alias = "business_product";
+    let alias = "Business_Product";
 
     let cols = {
         businessid : {
@@ -27,21 +27,12 @@ module.exports = (sequelize, dataTypes) =>{
             allowNull : false
         },
 
-        created_at : {
-            type : dataTypes.NOW,
-            allowNull : false
-        },
-
-        updated_at : {
-            type : dataTypes.NOW,
-            allowNull : false
-        }
     }
 
     let config = {
         tableName: "business_product",
         timestamps: true,
-        underscored: true
+        underscored: false
     }
 
     let Business_Product = sequelize.define(alias, cols, config);

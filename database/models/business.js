@@ -12,7 +12,7 @@ module.exports  = (sequelize, dataTypes) => {
                 allowNull : false
             },
 
-            profit : {
+            income : {
                 type : dataTypes.FLOAT,
                 allowNull : false
             },
@@ -23,13 +23,14 @@ module.exports  = (sequelize, dataTypes) => {
             },
 
             created_at : {
-                type : dataTypes.NOW,
+                type : dataTypes.DATE,
+                defaultValue:dataTypes.NOW,
                 allowNull : false
             },
 
             updated_at : {
                 type : dataTypes.NOW,
-                allowNull : false
+                allowNull : true
             }
 
 
@@ -42,16 +43,11 @@ module.exports  = (sequelize, dataTypes) => {
         let Business = sequelize.define(alias,cols,config);
 
         Business.associate = (models)=>{
-            Business.belongsToMany(models.Products, {
+            Business.belongsToMany(models.Product, {
                 through : "business_product",
-                foreignKey : "businessid"
-            });
-
-        Business.associate = (models) => {
-
+            })
             Business.belongsTo(models.User);
+            Business.hasMany(models.Sale,{foreignKey:'businessId'});
         };
-        }
-    
         return Business;
     }

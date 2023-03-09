@@ -1,7 +1,7 @@
 
 module.exports = (sequelize, dataTypes) =>{
 
-    let alias = "Products";
+    let alias = "Product";
     let cols = {
         id : {
             type : dataTypes.INTEGER,
@@ -15,21 +15,11 @@ module.exports = (sequelize, dataTypes) =>{
             type : dataTypes.STRING,
             allowNull: false
         },
-
-        created_at : {
-            type : dataTypes.NOW,
-            allowNull : false
-        },
-
-        updated_at : {
-            type : dataTypes.NOW,
-            allowNull : false
-        }
     }
 
     let config = {
-        tableName: "business",
-        timestamps: true,
+        tableName: "product",
+        timestamps: false,
         underscored: true
     }
 
@@ -38,7 +28,6 @@ module.exports = (sequelize, dataTypes) =>{
     Product.associate = (models)=>{
         Product.belongsToMany(models.Business, {
             through: "Business_Product",
-            foreignKey: "productid"
         });
     }
 
