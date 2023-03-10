@@ -5,6 +5,7 @@ const mainController = require('../controllers/main');
 
 router.get('/', mainController.all);
 router.get('/user', mainController.user);
+router.post('/user/update', mainController.updateUser);
 router.post('/', mainController.login);
 router.post('/newBusiness', mainController.newBusiness);
 router.post('/newSale', mainController.newSale);

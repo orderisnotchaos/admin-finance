@@ -49,13 +49,13 @@ module.exports = {
                         {name  : req.body.userName === undefined ? '' : req.body.userName},
                         {email : req.body.userName === undefined ? '' : req.body.userName}
                     ]}
-            }).then((user) =>{
+            }).then((userPiv) =>{
 
-                if(user === null){
+                if(userPiv === null){
                     res.json({message:"incorrect credentials"});
                 }else{
-                    
-                    res.json({token:generateAccessToken(({name  : req.body.userName})), message: `don't loose your token!`});
+                    let user = {name:userPiv.name,email:userPiv.email,dType:userPiv.dType,dNumber:userPiv.dNumber}
+                    res.json({token:generateAccessToken(({name  : req.body.userName})),user, message: `don't loose your token!`});
                 }
             })
         }
@@ -159,7 +159,6 @@ module.exports = {
         if(req.body !== undefined){
             let name = jwt.verify(req.headers.authorization,process.env.TOKEN_SECRET).name;
             db.User.findOne({where:{name:name}}).then(user =>{
-                console.log(user);
                 if(user === null || user === undefined){
                     db.User.create({email:req.body.uMail,
                                     name:req.body.uName,
@@ -191,5 +190,24 @@ module.exports = {
                 res.status(200).json(user);
             })
         }
+    },
+    updateUser: (req,res,next) =>{
+        if(req.headers.authorization!= null && req.headers.authorization !== undefined){
+            let name = jwt.verify(req.headers.authorization,process.env.TOKEN_SECRET).name;
+
+            db.User.findOne({where:{name:name}}).then(user =>{
+                if(user){
+                        console.log(req.body);
+                        db.User.update(req.body,{where:{name:user.name}}).then(response =>{
+                            if(response){
+                                res.status(200).json({ok:true});
+                            }else{
+                                res.status(500).json({ok:false});
+                            }
+                        });
+                    }
+                });
+        }
+
     }
 }
