@@ -1,0 +1,153 @@
+Date : 2023-04-29 18:03:07
+Directory : c:\Users\User\Documents\proyectos\admin finance\frontend
+Total : 81 files,  33542 codes, 35 comments, 851 blanks, all 34428 lines
+
+Languages
++----------------+------------+------------+------------+------------+------------+
+| language       | files      | code       | comment    | blank      | total      |
++----------------+------------+------------+------------+------------+------------+
+| JSON           |          3 |     29,650 |          0 |          3 |     29,653 |
+| CSS            |         32 |      2,051 |          0 |        397 |      2,448 |
+| JavaScript JSX |         31 |      1,596 |          4 |        370 |      1,970 |
+| JavaScript     |         12 |        181 |          7 |         48 |        236 |
+| Markdown       |          1 |         43 |          0 |         32 |         75 |
+| HTML           |          1 |         20 |         24 |          1 |         45 |
+| XML            |          1 |          1 |          0 |          0 |          1 |
++----------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                       | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                          |         81 |     33,542 |         35 |        851 |     34,428 |
+| admin-finance                                                                                                                              |         81 |     33,542 |         35 |        851 |     34,428 |
+| admin-finance (Files)                                                                                                                      |          3 |     29,668 |          0 |         34 |     29,702 |
+| admin-finance\public                                                                                                                       |          2 |         45 |         24 |          2 |         71 |
+| admin-finance\src                                                                                                                          |         76 |      3,829 |         11 |        815 |      4,655 |
+| admin-finance\src (Files)                                                                                                                  |          8 |        162 |          7 |         24 |        193 |
+| admin-finance\src\components                                                                                                               |         24 |        803 |          0 |        191 |        994 |
+| admin-finance\src\components\Business                                                                                                      |          2 |        135 |          0 |         36 |        171 |
+| admin-finance\src\components\MaxBusinessReached                                                                                            |          2 |         11 |          0 |          2 |         13 |
+| admin-finance\src\components\NavBar                                                                                                        |          2 |        179 |          0 |         46 |        225 |
+| admin-finance\src\components\NewSale                                                                                                       |          2 |         79 |          0 |         16 |         95 |
+| admin-finance\src\components\NewSaleItem                                                                                                   |          2 |         38 |          0 |          9 |         47 |
+| admin-finance\src\components\Product                                                                                                       |          2 |         64 |          0 |         15 |         79 |
+| admin-finance\src\components\Sale                                                                                                          |          2 |         68 |          0 |         11 |         79 |
+| admin-finance\src\components\Sales                                                                                                         |          2 |         28 |          0 |          7 |         35 |
+| admin-finance\src\components\ServiceUnavailable                                                                                            |          2 |         12 |          0 |          5 |         17 |
+| admin-finance\src\components\SideBar                                                                                                       |          2 |         72 |          0 |         12 |         84 |
+| admin-finance\src\components\Ticket                                                                                                        |          2 |         13 |          0 |          6 |         19 |
+| admin-finance\src\components\WelcomeComponent                                                                                              |          2 |        104 |          0 |         26 |        130 |
+| admin-finance\src\contexts                                                                                                                 |          2 |          6 |          0 |          9 |         15 |
+| admin-finance\src\js files                                                                                                                 |          5 |         62 |          0 |         24 |         86 |
+| admin-finance\src\routes                                                                                                                   |         37 |      2,796 |          4 |        567 |      3,367 |
+| admin-finance\src\routes\Account                                                                                                           |          8 |        248 |          0 |         39 |        287 |
+| admin-finance\src\routes\Account (Files)                                                                                                   |          2 |         72 |          0 |         11 |         83 |
+| admin-finance\src\routes\Account\components                                                                                                |          6 |        176 |          0 |         28 |        204 |
+| admin-finance\src\routes\Account\components\DetailsCard                                                                                    |          2 |         51 |          0 |          7 |         58 |
+| admin-finance\src\routes\Account\components\Suscription                                                                                    |          2 |         66 |          0 |         10 |         76 |
+| admin-finance\src\routes\Account\components\SuscriptionState                                                                               |          2 |         59 |          0 |         11 |         70 |
+| admin-finance\src\routes\AddSales                                                                                                          |          2 |        317 |          0 |         75 |        392 |
+| admin-finance\src\routes\AddSuscription                                                                                                    |          2 |        117 |          4 |         22 |        143 |
+| admin-finance\src\routes\BusinessDetails                                                                                                   |          2 |        265 |          0 |         69 |        334 |
+| admin-finance\src\routes\BusinessOverview                                                                                                  |          2 |        567 |          0 |         93 |        660 |
+| admin-finance\src\routes\Configuration                                                                                                     |          2 |         34 |          0 |          5 |         39 |
+| admin-finance\src\routes\Expired                                                                                                           |          2 |         31 |          0 |          7 |         38 |
+| admin-finance\src\routes\GeneralView                                                                                                       |          2 |        329 |          0 |         63 |        392 |
+| admin-finance\src\routes\Help                                                                                                              |          2 |         27 |          0 |          3 |         30 |
+| admin-finance\src\routes\Login                                                                                                             |          2 |        187 |          0 |         56 |        243 |
+| admin-finance\src\routes\Main                                                                                                              |          2 |        103 |          0 |         22 |        125 |
+| admin-finance\src\routes\NewBusiness                                                                                                       |          2 |        172 |          0 |         33 |        205 |
+| admin-finance\src\routes\NewUser                                                                                                           |          2 |        277 |          0 |         56 |        333 |
+| admin-finance\src\routes\NotFound                                                                                                          |          1 |         10 |          0 |          6 |         16 |
+| admin-finance\src\routes\SalesHistory                                                                                                      |          2 |         97 |          0 |         14 |        111 |
+| admin-finance\src\routes\ServerOffline                                                                                                     |          2 |         15 |          0 |          4 |         19 |
++--------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| filename                                                                                                                                   | language       | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\README.md                                                           | Markdown       |         43 |          0 |         32 |         75 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\package-lock.json                                                   | JSON           |     29,582 |          0 |          1 |     29,583 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\package.json                                                        | JSON           |         43 |          0 |          1 |         44 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\public\index.html                                                   | HTML           |         20 |         24 |          1 |         45 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\public\manifest.json                                                | JSON           |         25 |          0 |          1 |         26 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\App.css                                                         | CSS            |         36 |          0 |          7 |         43 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\App.js                                                          | JavaScript     |         81 |          0 |          7 |         88 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\App.test.js                                                     | JavaScript     |          7 |          0 |          2 |          9 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Business\Business.css                                | CSS            |        104 |          0 |         24 |        128 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Business\Business.jsx                                | JavaScript JSX |         31 |          0 |         12 |         43 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\MaxBusinessReached\MaxBusinessReached.css            | CSS            |          3 |          0 |          0 |          3 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\MaxBusinessReached\MaxBusinessReached.jsx            | JavaScript JSX |          8 |          0 |          2 |         10 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\NavBar\NavBar.css                                    | CSS            |        115 |          0 |         27 |        142 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\NavBar\NavBar.jsx                                    | JavaScript JSX |         64 |          0 |         19 |         83 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\NewSaleItem\NewSaleItem.css                          | CSS            |         28 |          0 |          4 |         32 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\NewSaleItem\NewSaleItem.jsx                          | JavaScript JSX |         10 |          0 |          5 |         15 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\NewSale\NewSale.css                                  | CSS            |         55 |          0 |         11 |         66 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\NewSale\NewSale.jsx                                  | JavaScript JSX |         24 |          0 |          5 |         29 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Product\Product.css                                  | CSS            |         43 |          0 |          8 |         51 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Product\Product.jsx                                  | JavaScript JSX |         21 |          0 |          7 |         28 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Sale\Sale.css                                        | CSS            |         48 |          0 |          8 |         56 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Sale\Sale.jsx                                        | JavaScript JSX |         20 |          0 |          3 |         23 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Sales\Sales.css                                      | CSS            |         10 |          0 |          3 |         13 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Sales\Sales.jsx                                      | JavaScript JSX |         18 |          0 |          4 |         22 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\ServiceUnavailable\ServiceUnavailable.css            | CSS            |          3 |          0 |          0 |          3 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\ServiceUnavailable\ServiceUnavailable.jsx            | JavaScript JSX |          9 |          0 |          5 |         14 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\SideBar\SideBar.css                                  | CSS            |         36 |          0 |          4 |         40 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\SideBar\SideBar.jsx                                  | JavaScript JSX |         36 |          0 |          8 |         44 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Ticket\Ticket.css                                    | CSS            |          6 |          0 |          1 |          7 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\Ticket\Ticket.jsx                                    | JavaScript JSX |          7 |          0 |          5 |         12 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\WelcomeComponent\WelcomeComponent.css                | CSS            |         59 |          0 |         18 |         77 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\components\WelcomeComponent\WelcomeComponent.jsx                | JavaScript JSX |         45 |          0 |          8 |         53 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\contexts\mainContext.js                                         | JavaScript     |          3 |          0 |          3 |          6 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\contexts\themeContext.js                                        | JavaScript     |          3 |          0 |          6 |          9 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\index.css                                                       | CSS            |         12 |          0 |          2 |         14 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\index.js                                                        | JavaScript     |         12 |          3 |          3 |         18 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\js files\changeViewOnClick.js                                   | JavaScript     |         40 |          0 |          7 |         47 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\js files\validateBusinessName.js                                | JavaScript     |          9 |          0 |          6 |         15 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\js files\validateCUIT.js                                        | JavaScript     |          4 |          0 |          5 |          9 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\js files\validateDocument.js                                    | JavaScript     |          7 |          0 |          5 |         12 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\js files\viewsList.js                                           | JavaScript     |          2 |          0 |          1 |          3 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\logo.svg                                                        | XML            |          1 |          0 |          0 |          1 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\reportWebVitals.js                                              | JavaScript     |         12 |          0 |          2 |         14 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\Account.css                                      | CSS            |         43 |          0 |          5 |         48 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\Account.jsx                                      | JavaScript JSX |         29 |          0 |          6 |         35 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\components\DetailsCard\DetailsCard.css           | CSS            |         28 |          0 |          2 |         30 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\components\DetailsCard\DetailsCard.jsx           | JavaScript JSX |         23 |          0 |          5 |         28 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\components\SuscriptionState\SuscriptionState.css | CSS            |         41 |          0 |          5 |         46 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\components\SuscriptionState\SuscriptionState.jsx | JavaScript JSX |         18 |          0 |          6 |         24 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\components\Suscription\Suscription.css           | CSS            |         55 |          0 |          8 |         63 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Account\components\Suscription\Suscription.jsx           | JavaScript JSX |         11 |          0 |          2 |         13 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\AddSales\AddSales.css                                    | CSS            |        104 |          0 |         23 |        127 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\AddSales\AddSales.jsx                                    | JavaScript JSX |        213 |          0 |         52 |        265 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\AddSuscription\AddSuscription.css                        | CSS            |         15 |          0 |          3 |         18 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\AddSuscription\AddSuscription.jsx                        | JavaScript JSX |        102 |          4 |         19 |        125 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\BusinessDetails\BusinessDetails.css                      | CSS            |        152 |          0 |         35 |        187 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\BusinessDetails\BusinessDetails.jsx                      | JavaScript JSX |        113 |          0 |         34 |        147 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\BusinessOverview\BusinessOverview.css                    | CSS            |        372 |          0 |         59 |        431 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\BusinessOverview\BusinessOverview.jsx                    | JavaScript JSX |        195 |          0 |         34 |        229 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Configuration\Configuration.css                          | CSS            |          5 |          0 |          1 |          6 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Configuration\Configuration.jsx                          | JavaScript JSX |         29 |          0 |          4 |         33 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Expired\Expired.css                                      | CSS            |         16 |          0 |          3 |         19 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Expired\Expired.jsx                                      | JavaScript JSX |         15 |          0 |          4 |         19 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\GeneralView\GeneralView.css                              | CSS            |        186 |          0 |         37 |        223 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\GeneralView\GeneralView.jsx                              | JavaScript JSX |        143 |          0 |         26 |        169 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Help\Help.css                                            | CSS            |         12 |          0 |          0 |         12 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Help\Help.jsx                                            | JavaScript JSX |         15 |          0 |          3 |         18 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Login\Login.css                                          | CSS            |        105 |          0 |         25 |        130 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Login\Login.jsx                                          | JavaScript JSX |         82 |          0 |         31 |        113 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Main\Main.css                                            | CSS            |         48 |          0 |         11 |         59 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\Main\Main.jsx                                            | JavaScript JSX |         55 |          0 |         11 |         66 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\NewBusiness\NewBusiness.css                              | CSS            |         95 |          0 |         16 |        111 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\NewBusiness\NewBusiness.jsx                              | JavaScript JSX |         77 |          0 |         17 |         94 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\NewUser\NewUser.css                                      | CSS            |        175 |          0 |         39 |        214 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\NewUser\NewUser.jsx                                      | JavaScript JSX |        102 |          0 |         17 |        119 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\NotFound\NotFound.jsx                                    | JavaScript JSX |         10 |          0 |          6 |         16 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\SalesHistory\SalesHistory.css                            | CSS            |         37 |          0 |          7 |         44 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\SalesHistory\SalesHistory.jsx                            | JavaScript JSX |         60 |          0 |          7 |         67 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\ServerOffline\ServerOffline.css                          | CSS            |          4 |          0 |          1 |          5 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\routes\ServerOffline\ServerOffline.jsx                          | JavaScript JSX |         11 |          0 |          3 |         14 |
+| c:\Users\User\Documents\proyectos\admin finance\frontend\admin-finance\src\setupTests.js                                                   | JavaScript     |          1 |          4 |          1 |          6 |
+| Total                                                                                                                                      |                |     33,542 |         35 |        851 |     34,428 |
++--------------------------------------------------------------------------------------------------------------------------------------------+----------------+------------+------------+------------+------------+

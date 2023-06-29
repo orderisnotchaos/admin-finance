@@ -1,0 +1,40 @@
+Date : 2023-04-29 18:02:56
+Directory : c:\Users\User\Documents\proyectos\admin finance\database
+Total : 12 files,  -6 codes, -5 comments, -82 blanks, all -93 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         12 |         -6 |         -5 |        -82 |        -93 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                   |         12 |         -6 |         -5 |        -82 |        -93 |
+| ..                                                                                  |          3 |       -341 |         -5 |       -158 |       -504 |
+| ..\controllers                                                                      |          3 |       -341 |         -5 |       -158 |       -504 |
+| config                                                                              |          1 |         23 |          0 |          1 |         24 |
+| models                                                                              |          8 |        312 |          0 |         75 |        387 |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                            | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\User\Documents\proyectos\admin finance\controllers\business.js             | JavaScript |       -183 |         -3 |        -87 |       -273 |
+| c:\Users\User\Documents\proyectos\admin finance\controllers\main.js                 | JavaScript |        -66 |          0 |        -30 |        -96 |
+| c:\Users\User\Documents\proyectos\admin finance\controllers\user.js                 | JavaScript |        -92 |         -2 |        -41 |       -135 |
+| c:\Users\User\Documents\proyectos\admin finance\database\config\config.js           | JavaScript |         23 |          0 |          1 |         24 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\business.js         | JavaScript |         49 |          0 |          9 |         58 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\business_product.js | JavaScript |         38 |          0 |         14 |         52 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\index.js            | JavaScript |         30 |          0 |          7 |         37 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\product.js          | JavaScript |         31 |          0 |          9 |         40 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\sale.js             | JavaScript |         44 |          0 |          9 |         53 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\sale_product.js     | JavaScript |         31 |          0 |         12 |         43 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\ticket.js           | JavaScript |         30 |          0 |          8 |         38 |
+| c:\Users\User\Documents\proyectos\admin finance\database\models\user.js             | JavaScript |         59 |          0 |          7 |         66 |
+| Total                                                                               |            |         -6 |         -5 |        -82 |        -93 |
++-------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
