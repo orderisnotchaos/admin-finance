@@ -8,6 +8,13 @@ function generateAccessToken(user) {
 };
 module.exports = {
 
+    ill: async (req,res) =>{
+
+        const data = {data:"data"};
+
+        res.status(200).render(data);
+    },
+
     mAll: async (req,res) =>{
 
         let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});

@@ -49,11 +49,11 @@ module.exports = {
 
         for(let i=0; i<errors.length;i++){
          
-        if(errors[i].code === -1) return res.status(500).json({message:'service unavailable', ok:false});
+            if(errors[i].code === -1) return res.status(500).json({message:'service unavailable', ok:false});
 
-        if(errors[i].code === -2) return res.status(400).json({message:"product not found",name:errors[i].name,ok:false});
+            if(errors[i].code === -2) return res.status(400).json({message:"product not found",name:errors[i].name,ok:false});
 
-        if(errors[i].code === -3) return res.status(400).json({message:'insufficient stock',name:errors[i].name,ok:false});   
+            if(errors[i].code === -3) return res.status(400).json({message:'insufficient stock',name:errors[i].name,ok:false});   
         }
 
         if(!products) return res.status(500).json({message:'service unavailable'});
