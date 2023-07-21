@@ -11,14 +11,18 @@ module.exports = {
 
     user : async (req,res) =>{
 
-            let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});;
-            res.status(200).json(user);            
+        if(req.name === undefined) return res.status(400);
+        
+        let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});;
+        res.status(200).json(user);            
     },
     
     updateUser: async (req,res) =>{
 
         if(req.headers.authorization!= null && req.headers.authorization !== undefined){
 
+            if(req.name === undefined) return res.status(400);
+        
             let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
                 if(user){
                     let response = await db.User.update(req.body,{where:{name:user.name}});
@@ -33,6 +37,8 @@ module.exports = {
 
     newBusiness: async (req, res) =>{
 
+        if(req.name === undefined) return res.status(400);
+        
         let user = await db.User.findOne({where: {name : req.name}});
 
         if(!user) return res.status(500).json({message:"incorrect credentials",ok:false});
@@ -94,7 +100,7 @@ module.exports = {
     },
 
     processPayment: async (req,res) =>{
-        console.log(req.body);
+
         if(!req.body) return res.status(400).json({message:'bad request',ok:false});
 
         let user = await db.User.findOne({name:req.name});
@@ -129,6 +135,8 @@ module.exports = {
     },
 
     acceptedTerms: async (req,res) =>{
+        
+        if(req.name === undefined) return res.status(400);
         
         let user = await db.User.findOne({where:{name:req.name}});
 

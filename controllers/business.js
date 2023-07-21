@@ -118,6 +118,8 @@ module.exports = {
 
     newProduct: async(req,res) =>{
 
+        if(req.name === undefined) return res.status(400);
+        
         let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
 
         if(!user){
@@ -180,6 +182,9 @@ module.exports = {
 
     },
     salesHistory: async (req,res) =>{
+
+        if(req.name === undefined) return res.status(400);
+        
         let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
 
         if(!user) return res.status(403).json({ ok:false});
@@ -201,6 +206,8 @@ module.exports = {
 
 
     updateProduct: async (req,res) =>{
+
+        if(req.name === undefined) return res.status(400);
 
         let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
 
