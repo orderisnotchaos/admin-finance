@@ -18,7 +18,7 @@ module.exports = function authenticateToken(req, res, next) {
         data = jwt.verify(token, process.env.TOKEN_SECRET );
       }catch(err){
         if(err){
-          return res.status(401).json({message:'invalid/non-existent token',ok:false});
+          return res.status(401).json({message:'invalid/non existent token',ok:false});
         }
         next();
       }

@@ -17,6 +17,8 @@ module.exports = {
 
     mAll: async (req,res) =>{
 
+        if(req.name === undefined) return res.status(400);
+        
         let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
 
         if(!user) return res.status(500);
@@ -30,6 +32,8 @@ module.exports = {
     },
     all: async (req,res) =>{
 
+        if(req.name === undefined) return res.status(400);
+        
         let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
 
         if(!user) return res.status(403);
@@ -43,24 +47,25 @@ module.exports = {
     }, 
     
     login: async (req,res) =>{
+
         let userPiv = await db.User.findOne({where:{password: req.body.password,[Op.or]:
                                                 [{name  : req.body.userName === undefined ? '' : req.body.userName}, {mail : req.body.userName === undefined ? '' : req.body.userName}]}});
 
-            if(userPiv === null) return res.status(400).json({message:'credenciales incorrectas'});
+        if(userPiv === null) return res.status(400).json({message:'credenciales incorrectas'});
 
-            let businesses = await db.Business.findAll({where: {userId:userPiv.id},
-                                                        include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}]}
-                                                        ,{model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+        let businesses = await db.Business.findAll({where: {userId:userPiv.id},
+                                                    include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}]}
+                                                    ,{model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
 
-            if(!businesses) return res.status(500);
+        if(!businesses) return res.status(500);
 
-            let user = {name:userPiv.name,
-                        mail:userPiv.mail,
-                        dType:userPiv.dType,
-                        dNumber:userPiv.dNumber,
-                        suscriptionState:30-Math.trunc((Date.now()-userPiv.suscriptionState)/86400000),
-                        firstTime:userPiv.firstTime};
-            return res.status(200).json({token:generateAccessToken(({name  : req.body.userName})),user,businesses, message: `don't loose your token!`});
+        let user = {name:userPiv.name,
+                    mail:userPiv.mail,
+                    dType:userPiv.dType,
+                    dNumber:userPiv.dNumber,
+                    suscriptionState:30-Math.trunc((Date.now()-userPiv.suscriptionState)/86400000),
+                    firstTime:userPiv.firstTime};
+        return res.status(200).json({token:generateAccessToken(({name  : req.body.userName})),user,businesses, message: `don't loose your token!`});
     },
 
     
