@@ -49,5 +49,8 @@ module.exports  = (sequelize, dataTypes) => {
             Sale.belongsToMany(models.Product,{through:'Sale_Product',foreignKey:'saleTime',otherKey:'saleBusiness'})
             Sale.hasOne(models.Ticket,{as:'Ticket',foreignKey:'sId'});
         }
+
+        Sale.sync({force:false});
+        
         return Sale;
     }

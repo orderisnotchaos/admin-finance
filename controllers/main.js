@@ -12,10 +12,15 @@ module.exports = {
 
         const data = {data:"data"};
 
-        res.status(200).render(data);
+        return res.status(200).render(data);
     },
 
     mAll: async (req,res) =>{
+
+        
+        const data = {data:"data"};
+
+        return res.status(200).render(data);
 
         if(req.name === undefined) return res.status(400);
         

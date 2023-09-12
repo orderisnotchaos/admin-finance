@@ -1,4 +1,4 @@
-module.exports = (sequelize, dataTypes) =>{
+module.exports = async (sequelize, dataTypes) =>{
 
     let alias = "Business_Product";
 
@@ -48,5 +48,6 @@ module.exports = (sequelize, dataTypes) =>{
     let Business_Product = sequelize.define(alias, cols, config);
 
 
+    Business_Product.sync({force:false})
     return Business_Product;
 }

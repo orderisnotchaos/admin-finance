@@ -61,6 +61,8 @@ module.exports  = (sequelize, dataTypes) => {
                 foreignKey: "userId"
             });
         }
+
+        User.sync({force:false});
     
         return User;
     }

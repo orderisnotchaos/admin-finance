@@ -34,5 +34,7 @@ module.exports = (sequelize,dataTypes) =>{
         Ticket.belongsTo(models.Sale,{as:'Ticket',foreignKey:'sId'});
     })
 
+    Ticket.sync({force:false});
+    
     return Ticket;
 }

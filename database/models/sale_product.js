@@ -39,5 +39,7 @@ module.exports = (sequelize, dataTypes) =>{
     let Sale_Product = sequelize.define(alias, cols, config);
 
 
+    Sale_Product.sync({force:false});
+    
     return Sale_Product;
 }

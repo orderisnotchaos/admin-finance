@@ -54,5 +54,7 @@ module.exports  = (sequelize, dataTypes) => {
             Business.belongsTo(models.User);
             Business.hasMany(models.Sale,{foreignKey:'businessId'});
         };
+
+        Business.sync({force:false})
         return Business;
     }

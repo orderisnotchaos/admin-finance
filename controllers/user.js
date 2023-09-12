@@ -103,6 +103,8 @@ module.exports = {
 
         if(!req.body) return res.status(400).json({message:'bad request',ok:false});
 
+        if(req.name === undefined) return res.status(400);
+        
         let user = await db.User.findOne({name:req.name});
 
         if(!user) return res.status(400).json({message:'bad request',ok:false});
