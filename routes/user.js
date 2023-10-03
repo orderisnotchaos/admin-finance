@@ -10,7 +10,9 @@ router.post('/newBusiness', authToken, userController.newBusiness);
 router.get('/preferenceId',authToken, userController.preferenceId);
 router.post('/processPayment',authToken, userController.processPayment);
 router.post('/acceptedTerms',authToken, userController.acceptedTerms);
+router.get('/pageReload',authToken, userController.pageReload);
 router.use('/business',businessRouter);
+
 
 
 module.exports = router;

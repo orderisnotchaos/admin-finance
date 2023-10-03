@@ -50,7 +50,5 @@ module.exports  = (sequelize, dataTypes) => {
             Sale.hasOne(models.Ticket,{as:'Ticket',foreignKey:'sId'});
         }
 
-        Sale.sync({force:false});
-        
         return Sale;
     }

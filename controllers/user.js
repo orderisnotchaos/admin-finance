@@ -70,9 +70,27 @@ module.exports = {
                                                                     include:['profit','sold','stock','price']
                                                                 }}}]});
 
-        res.status(200).json({message:"business created",data:businesses,ok:true});
+        return res.status(200).json({message:"business created",data:businesses,ok:true});
 
     }, 
+
+    pageReload: async (req,res) =>{
+
+        if (!req.name) return res.status(400).json({});
+
+        const user = await db.User.findOne({where:{name:req.name}});
+
+        const businesses = await db.Business.findAll({where:{userId:user.id},
+            include:[{model:db.Sale, as: 'Sales',
+                    order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'},{model:db.Product,as:'Products',through:{attributes:{include:['sold']}}}]},
+                    {model:db.Product, as:'Products',
+                     through:{
+                        attributes:{
+                            include:['profit','sold','stock','price']
+                        }}}]});
+        
+        return res.status(200).json({businesses,...user,ok:true});
+    },
 
     preferenceId: async (req,res) =>{
 

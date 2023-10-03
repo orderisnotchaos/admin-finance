@@ -35,7 +35,6 @@ module.exports = (sequelize, dataTypes) =>{
         });
 
     }
-
-    Product.sync({force:false});
+    
     return Product;
 }

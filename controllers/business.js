@@ -3,7 +3,6 @@ const { Op } = require('sequelize');
 const db = require('../database/models/index');
 const Afip = require('@afipsdk/afip.js');
 const fs = require('fs');
-const { electronicBillGenerator, getVoucherInfo, getLastVoucher } = require('../electronicBillsGeneration');
 
 const afip = new Afip({CUIT:20398050631});
 
@@ -106,6 +105,10 @@ module.exports = {
  
         if(!sale_products) return res.status(500).json({message:'service unavailable',ok:false});
 
+        business.income += saleValue;
+
+        await business.save();
+        
         let businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}],include:[{model:db.Product, as:'Products',through:{attributes:{include:['sold']}}}]},
                         {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
@@ -120,26 +123,48 @@ module.exports = {
 
         if(req.name === undefined) return res.status(400);
         
-        let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
+        const user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
 
-        if(!user){
+        if(!user) return res.status(404).json({ok:false});
 
-            return res.status(404).json({ok:false});
-        }
-
-        let product = await db.Product.findOne({where:{name:req.body.name}});
+        const product = await db.Product.findOne({where:{name:req.body.name}});
 
         if(product){
 
-            return res.status(400).json({message:'product already exists',ok:false})
+            const business = await db.Business.findOne({where:{id:req.body.bId}});
+
+            if(!business) return res.status(500);
+
+            const business_product = await db.Business_Product.findOne({where:{businessid:business.id,productid:product.id}});
+
+            if(business_product) return res.status(400);
+
+            const bp = await db.Business_Product.create({
+                businessid:business.id,
+                productid: product.id,
+                stock: req.body.stock,
+                sold: 0,
+                profit:0,
+                price:req.body.price
+            });
+
+            if(!bp) return res.status(500);
+
+            let businesses = await db.Business.findAll({where:{userId:user.id},
+                include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}],include:[{model:db.Product, as:'Products',through:{attributes:{include:['sold']}}}]},
+                            {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+
+            return res.status(200).json({businesses, ok:true});
+            
         }
 
-        let newProduct = await db.Product.create({name:req.body.name}); 
+        const newProduct = await db.Product.create({name:req.body.name}); 
 
         if(!newProduct){
 
             return res.status(500).json({message:"couldn't create new product",ok:false});
         }
+
 
         let newBusiness_Product = await db.Business_Product.create({businessid:req.body.bId,
             productid:newProduct.id,
@@ -166,6 +191,66 @@ module.exports = {
 
     },
 
+    editProduct: async (req,res) =>{
+
+        if(req.name === undefined) return res.status(400);
+
+        let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
+
+        if(!user) return res.status(404).json({ok:false});
+
+        if(!req.body.name) return res.status(400);
+        
+        let product = await db.Product.findOne({where:{name:req.body.name}});
+
+        let business_product = await db.Business_Product.findOne({where:{businessid:req.body.bId,productid:product.id}});
+        product.name = req.body.name;
+
+        business_product.price = req.body.price;
+
+        business_product.stock = req.body.stock;
+
+        await product.save();
+
+        await business_product.save();
+
+        let businesses = await db.Business.findAll({where:{userId:user.id},
+            include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+
+        res.status(200).json({businesses,ok:true});
+    },
+
+    deleteProduct : async (req, res) =>{
+
+        if(!req.name || !req.body.bName || !req.body.productName) return res.status(400);
+
+        const user = await db.User.findOne({where:{name:req.name}});
+
+        if(!user) return res.status(500);
+
+        const product = await db.Product.findOne({where:{name:req.body.productName}});
+
+        if(!product) return res.status(500);
+
+        const business = await db.Business.findOne({where:{name:req.body.bName,userId:user.id}});
+
+        if(!business) return res.status(500);
+
+        const business_product = await db.Business_Product.findOne({where:{businessid:business.id, productid:product.id}})
+
+        if(!business_product) return res.status(500);
+
+        await business_product.destroy();
+
+        const businesses = await db.Business.findAll({where:{userId:user.id},
+            include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+
+        return res.status(200).json({businesses,ok:true});
+
+    },
+
     data: async (req,res) =>{
 
         let result;
@@ -181,6 +266,33 @@ module.exports = {
         return res.status(200).json({data:result,ok:true});
 
     },
+    deleteSale: async(req,res) =>{
+
+        if(!req.name) return res.status(400);
+
+        const sale = await db.Sale.findOne({where:{ticketName:req.body.ticketName}});
+
+        const business = await db.Business.findOne({where:{id:req.body.bId}});
+
+        const sale_product = await db.Sale_Product.findAll({where:{saleTime:sale.time,saleBusiness:business.id}})
+
+        const business_product = await db.Product.findOne({where:{productid:sale_product.productid,businessid:business.id}});
+
+        business_product.stock += sale_product.sold;
+
+        business.income -=sale_product.sold*business_product.price;
+
+        await business_product.save();
+
+        await business.save();
+
+        const businesses = await db.Business.findAll({where:{userId:user.id},
+            include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+
+        return res.status(200).json({businesses,ok:true});
+    },
+
     salesHistory: async (req,res) =>{
 
         if(req.name === undefined) return res.status(400);
@@ -202,35 +314,6 @@ module.exports = {
         //console.log(vouchers);
 
         return res.status(200).json({data:sales,ok:true});
-    },
-
-
-    updateProduct: async (req,res) =>{
-
-        if(req.name === undefined) return res.status(400);
-
-        let user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
-
-        if(!user) return res.status(403).json({ ok:false});
-
-        if(!req.body) return res.status(400).json({ok:false});
-
-        if(!req.body.bId || !req.body.pId || !req.body.stock || !req.body.price) return res.status(400).json({ok:false});
-
-        let business_product = await db.Business_Product.findOne({where:{businessid:req.body.bId,productid:req.body.pId}});
-
-        if(!business_product) return res.status(500).json({message:'service unavailable',ok:false});
-
-        business_product.stock = isNaN(Number(req.body.stock)) ? business_product.stock : Number(req.body.stock);
-
-        business_product.price = isNaN(Number(req.body.price)) ? business_product.price : Number(req.body.price);
-
-        business_product.updated_at = Date.now();
-
-        await business_product.save();
-
-        return res.status(200).json({ stock:business_product.stock,price:business_product.price,ok:true});
-
     },
 
     generateTicket: async (req, res) =>{
