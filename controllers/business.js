@@ -81,7 +81,7 @@ module.exports = {
 
             const now = new Date();
             
-            const time = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}-${Math.floor(Math.random() * 1000)}`;
+            const time = `${now.getFullYear()}-${now.getMonth() + 1 <10 ? `0${now.getMonth() + 1 }`: now.getMonth() + 1 }-${now.getDate()} ${now.getHours() < 10 ? `0${now.getHours()}`: now.getHours()}:${now.getMinutes() < 10 ? `0${now.getMinutes()}`:now.getMinutes()}:${now.getSeconds() < 10 ? `0${now.getSeconds()}`: now.getSeconds()}-${Math.floor(Math.random() * 1000)}`;
 
             try{
                 sale_product = await db.Sale_Product.create({saleTime:time,saleBusiness:business.id,productid:product.id,sold:Number(req.body.saleItems[i].quantity)})
@@ -108,7 +108,7 @@ module.exports = {
         business.income += saleValue;
 
         await business.save();
-        
+
         let businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}],include:[{model:db.Product, as:'Products',through:{attributes:{include:['sold']}}}]},
                         {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
@@ -270,13 +270,17 @@ module.exports = {
 
         if(!req.name) return res.status(400);
 
+        const user = await db.User.findOne({where:{name:req.name}});
+
         const sale = await db.Sale.findOne({where:{ticketName:req.body.ticketName}});
 
         const business = await db.Business.findOne({where:{id:req.body.bId}});
 
-        const sale_product = await db.Sale_Product.findAll({where:{saleTime:sale.time,saleBusiness:business.id}})
+        const time = `${sale.time.getFullYear()}-${sale.time.getMonth() + 1 <10 ? `0${sale.time.getMonth() + 1 }`: sale.time.getMonth() + 1 }-${sale.time.getDate()} ${sale.time.getHours() < 10 ? `0${sale.time.getHours()}`: sale.time.getHours()}:${sale.time.getMinutes() < 10 ? `0${sale.time.getMinutes()}`:sale.time.getMinutes()}:${sale.time.getSeconds() < 10 ? `0${sale.time.getSeconds()}`: sale.time.getSeconds()}-${Math.floor(Math.random() * 1000)}`;
 
-        const business_product = await db.Product.findOne({where:{productid:sale_product.productid,businessid:business.id}});
+        const sale_product = await db.Sale_Product.findOne({where:{saleTime:time,saleBusiness:business.id}})
+
+        const business_product = await db.Business_Product.findOne({where:{productid:sale_product.productid,businessid:business.id}});
 
         business_product.stock += sale_product.sold;
 
