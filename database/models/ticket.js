@@ -31,7 +31,7 @@ module.exports = (sequelize,dataTypes) =>{
     let Ticket = sequelize.define(alias,cols,config);
 
     Ticket.associate = (models =>{
-        Ticket.belongsTo(models.Sale,{as:'Ticket',foreignKey:'sId'});
+        Ticket.belongsTo(models.Sale,{as:'Ticket',foreignKey:'saleId'});
     })
 
     Ticket.sync({force:false});

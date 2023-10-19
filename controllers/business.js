@@ -309,7 +309,7 @@ module.exports = {
 
         let business = await db.Business.findOne({where:{name:req.body.bName}});
 
-        let sales = await db.Sale.findAll({include:[{model:db.Ticket,as:'Ticket'}]});
+        let sales = await db.Sale.findAll({where:{businessId:business.id},include:[{model:db.Ticket,as:'Ticket'}]});
 
         //let vouchers = await sales.map(async(sale) =>{return getVoucherInfo(sale.saleId,business.id,11)});
 
