@@ -111,7 +111,7 @@ module.exports = {
 
         let businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}],include:[{model:db.Product, as:'Products',through:{attributes:{include:['sold']}}}]},
-                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
 
         if(!businesses) return res.status(500).json({ok:false});
 
@@ -138,21 +138,26 @@ module.exports = {
             const business_product = await db.Business_Product.findOne({where:{businessid:business.id,productid:product.id}});
 
             if(business_product) return res.status(400);
-
+            function generateHexadecimal() {
+                // Generate a random 6-digit hexadecimal integer
+                const hexNumber = Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0');
+                return hexNumber;
+            }
             const bp = await db.Business_Product.create({
                 businessid:business.id,
                 productid: product.id,
                 stock: req.body.stock,
                 sold: 0,
                 profit:0,
-                price:req.body.price
-            });
+                price:req.body.price,
+                color: `${generateHexadecimal()}`
+             });
 
             if(!bp) return res.status(500);
 
             let businesses = await db.Business.findAll({where:{userId:user.id},
                 include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}],include:[{model:db.Product, as:'Products',through:{attributes:{include:['sold']}}}]},
-                            {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                            {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
 
             return res.status(200).json({businesses, ok:true});
             
@@ -182,7 +187,7 @@ module.exports = {
 
         let businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
-                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
         if(!businesses){
             return res.status(500).json({mesage:'product was created but there was an error with the database',ok:false});
         }
@@ -216,7 +221,7 @@ module.exports = {
 
         let businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
-                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
 
         res.status(200).json({businesses,ok:true});
     },
@@ -245,7 +250,7 @@ module.exports = {
 
         const businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
-                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
 
         return res.status(200).json({businesses,ok:true});
 
@@ -292,7 +297,7 @@ module.exports = {
 
         const businesses = await db.Business.findAll({where:{userId:user.id},
             include:[{model:db.Sale, as: 'Sales', order:[['time','DESC']], include:[{model:db.Ticket,as:'Ticket'}]},
-                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                        {model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
 
         return res.status(200).json({businesses,ok:true});
     },

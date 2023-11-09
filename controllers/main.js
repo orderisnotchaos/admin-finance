@@ -60,7 +60,7 @@ module.exports = {
 
         let businesses = await db.Business.findAll({where: {userId:userPiv.id},
                                                     include:[{model:db.Sale, as: 'Sales',order:[['time','DESC']],include:[{model:db.Ticket,as:'Ticket'}]}
-                                                    ,{model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price']}}}]});
+                                                    ,{model:db.Product, as:'Products',through:{attributes:{include:['profit','sold','stock','price','color']}}}]});
 
         if(!businesses) return res.status(500);
 

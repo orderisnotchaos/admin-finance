@@ -86,7 +86,7 @@ module.exports = {
                     {model:db.Product, as:'Products',
                      through:{
                         attributes:{
-                            include:['profit','sold','stock','price']
+                            include:['profit','sold','stock','price','color']
                         }}}]});
         
         return res.status(200).json({businesses,...user,ok:true});
