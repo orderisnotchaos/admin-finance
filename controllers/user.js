@@ -3,9 +3,7 @@ const db = require('../database/models/index');
 const { Op } = require('sequelize');
 const mercadopago = require('mercadopago');
 
-mercadopago.configure({
-    access_token: 'TEST-3468240649607797-042414-b3cc549bbd979fc20f529b3ce3db5a0c-181912221'
-});
+
 
 module.exports = {
 

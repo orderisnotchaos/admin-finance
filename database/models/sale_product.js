@@ -22,6 +22,11 @@ module.exports = (sequelize, dataTypes) =>{
             primaryKey : true
 
         },
+        saleId: {
+            type: dataTypes.INTEGER,
+            allowNull: false,
+            primaryKey:false
+        },
 
         sold: {
             type : dataTypes.INTEGER,

@@ -84,7 +84,7 @@ module.exports = {
             const time = `${now.getFullYear()}-${now.getMonth() + 1 <10 ? `0${now.getMonth() + 1 }`: now.getMonth() + 1 }-${now.getDate()} ${now.getHours() < 10 ? `0${now.getHours()}`: now.getHours()}:${now.getMinutes() < 10 ? `0${now.getMinutes()}`:now.getMinutes()}:${now.getSeconds() < 10 ? `0${now.getSeconds()}`: now.getSeconds()}-${Math.floor(Math.random() * 1000)}`;
 
             try{
-                sale_product = await db.Sale_Product.create({saleTime:time,saleBusiness:business.id,productid:product.id,sold:Number(req.body.saleItems[i].quantity)})
+                sale_product = await db.Sale_Product.create({saleTime:time,saleBusiness:business.id,productid:product.id,saleId:sale.saleId,sold:Number(req.body.saleItems[i].quantity)})
             }catch(err){
                 console.log(err);
                 if(err.name === 'SequelizeUniqueConstraintError'){
@@ -121,6 +121,11 @@ module.exports = {
 
     newProduct: async(req,res) =>{
 
+        function generateHexadecimal() {
+            // Generate a random 6-digit hexadecimal integer
+            const hexNumber = Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0');
+            return hexNumber;
+        }
         if(req.name === undefined) return res.status(400);
         
         const user = await db.User.findOne({where: {[Op.or]:{name : req.name, mail : req.name}}});
@@ -138,11 +143,7 @@ module.exports = {
             const business_product = await db.Business_Product.findOne({where:{businessid:business.id,productid:product.id}});
 
             if(business_product) return res.status(400);
-            function generateHexadecimal() {
-                // Generate a random 6-digit hexadecimal integer
-                const hexNumber = Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0');
-                return hexNumber;
-            }
+
             const bp = await db.Business_Product.create({
                 businessid:business.id,
                 productid: product.id,
@@ -170,13 +171,13 @@ module.exports = {
             return res.status(500).json({message:"couldn't create new product",ok:false});
         }
 
-
         let newBusiness_Product = await db.Business_Product.create({businessid:req.body.bId,
             productid:newProduct.id,
             stock:Number(req.body.stock),
             sold: 0,
             profit:0,
             price:Number(req.body.price),
+            color: `${generateHexadecimal()}`,
             created_at:Date.now(),
             updated_at:0});
 
